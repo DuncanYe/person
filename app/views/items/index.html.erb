@@ -1,1 +1,10 @@
 <h1>Items Page</h1>
+
+<% @items.each do |item| %>
+  <div class="col-md-4">
+    <h3><%= item.title %></h3>
+    <p>時間： <%= item.date %> 地點：<%= item.location %></p>
+    <p><%= truncate(item.intro, length: 300) %></p>
+    <hr>
+  </div>
+<% end %>
