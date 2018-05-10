@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   authenticated :user do 
     root "items#index", as: "authenticated_root"
   end 
+
   get 'welcomes/about_me'
   root "welcomes#about_me"
+
+  namespace :admin do 
+    resources :genres
+    root "genre#index"
+  end
+
 end
