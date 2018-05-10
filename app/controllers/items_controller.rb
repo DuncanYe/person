@@ -10,8 +10,10 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:notice] = '項目建立成功'
       redirect_to items_path
     else
+      flash[:alert] = '項目建議有誤'
       render :new
     end
   end
