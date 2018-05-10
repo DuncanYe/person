@@ -1,10 +1,17 @@
 <h1>Items Page</h1>
-
-<% @items.each do |item| %>
-  <div class="col-md-4">
-    <h3><%= item.title %></h3>
-    <p>時間： <%= item.date %> 地點：<%= item.location %></p>
-    <p><%= truncate(item.intro, length: 300) %></p>
-    <hr>
-  </div>
-<% end %>
+<div class="col-md-8">
+  <% @items.each do |item| %>
+    <div class="col-md-4">
+      <h3><%= link_to item.title, item_path(item)  %></h3>
+      <p>時間： <%= item.date %> 地點：<%= item.location %></p>
+      <div class="button-group">
+        <%= link_to 'Edit', edit_item_path(item) %>
+        <%= link_to 'Trash It', item_path(item), method: :delete, data: { confirm: 'Are you sure?'} %>
+      </div>
+      <hr>
+    </div>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <h1>Genre </h1>
+</div>
