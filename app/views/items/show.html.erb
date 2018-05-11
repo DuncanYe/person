@@ -3,3 +3,27 @@
 <p>時間： <%= @item.date %>地點：<%= @item.location %></p>
 <p> 主辦人：<%= @item.user.name %></p>
 <p><%= @item.intro %></p>
+
+<div class="col-md-6 col-md-offset-3">
+  <div class="comment-form">
+  <h3>Question：</h3>
+
+    <%= form_for [@item, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: "提問或留言", class: 'form-control' %>
+        <br>
+        <%= f.submit class: 'btn btn-success' %>  
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>    
+      </div>
+
+    <% end %>
+  </div>
+  <div class="comments">
+    <h3>Discusstion：</h3>
+      <% @item.comments.each do |comment| %>
+        <p><%= simple_format comment.content %></p>
+        <em><%= time_ago_in_words(comment.created_at) %> </em>
+      <% end %>
+  </div>
+  
+</div>
