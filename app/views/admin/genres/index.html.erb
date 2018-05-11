@@ -1,1 +1,33 @@
-<h1>Admin Create Genre</h1>
+<div class="col-md-6 col-md-offset-3">
+  <h1>Admin Create Genre</h1>
+  <div class="col-md-6">
+    <%= render partial: 'form', locals: { genre: @genre } %>
+  </div>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Genre Name</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @genres.each do |genre| %>
+      <tr>
+        <th scope="row"><%= genre.id %></th>
+        <td><%= genre.name %></td>
+        <td>
+          <%= link_to 'Edit', admin_genres_path(id: genre.id) %>
+          <!-- 雖然名稱是'Edit', 但實際上是送到genres的index(admin_genres_path),
+            並在後面傳入genre的參數，form_for表單就會讀取到資料從New轉變成Edit。-->
+          <%= link_to 'Delete', admin_genre_path(genre), method: :delete, data: { confirm: "Are you sure?"} %>  
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</div>
+
+      
