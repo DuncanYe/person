@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     root "genre#index"
   end
 
+  resources :users, only: [:index, :show, :edit, :update]
+
 end
