@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Genre.destroy_all
+
+genre_list = [
+  { name: "球類活動" },
+  { name: "路上活動" },
+  { name: "水上活動" },
+  { name: "桌上活動" },
+  { name: "踏青活動" },
+]
+
+genre_list.each do |genre|
+  Genre.create( name: genre[:name] )
+end
+puts "建立#{Genre.count}個活動類型"
