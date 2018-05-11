@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'ffaker'
 gem 'kaminari'
+gem 'paperclip', '~> 6.0.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
