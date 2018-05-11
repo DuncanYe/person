@@ -1,0 +1,24 @@
+<h1>Items Page</h1>
+<div class="col-md-8">
+  <% @items.each do |item| %>
+    <div class="col-md-6">
+      <h3>[ <%= item.genre.name %> ]</h3>
+      <h3><%= link_to item.title, item_path(item)  %></h3>
+      <p>時間： <%= item.date %> 地點：<%= item.location %></p>
+      <div class="button-group">
+        <%= link_to 'Edit', edit_item_path(item) %>
+        <%= link_to 'Trash It', item_path(item), method: :delete, data: { confirm: 'Are you sure?'} %>
+      </div>
+      <hr>
+    </div>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <div class="text-center">
+    <h1> 活動類型 </h1>
+    <h3><%= link_to "全部活動", items_path %></h3>
+    <% @genres.each do |genre| %>
+    <h3><%= link_to genre.name, genre_path(genre) %></h3>
+    <% end %>
+  </div>
+</div>
