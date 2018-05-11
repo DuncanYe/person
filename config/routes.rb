@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :items
+  resources :genres, only: :show
   authenticated :user do 
     root "items#index", as: "authenticated_root"
   end 
