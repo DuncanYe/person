@@ -10,6 +10,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:item_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:notice] = "留言已經刪除"
+    redirect_to item_path(@item)
+  end
+
   private
 
   def comment_params

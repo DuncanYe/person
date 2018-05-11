@@ -23,6 +23,9 @@
       <% @item.comments.each do |comment| %>
         <p><%= simple_format comment.content %></p>
         <em><%= time_ago_in_words(comment.created_at) %> </em>
+        <% if  comment.user_id == current_user.id %>
+            <%= link_to 'Destory', item_comment_path(@item, comment), method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
       <% end %>
   </div>
   
