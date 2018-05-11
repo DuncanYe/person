@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.order(created_at: :desc)
+    @genres = Genre.all
   end
 
   def new
