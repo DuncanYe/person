@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(params.require(:user).permit(:name, :intro))
+    if @user.update(params.require(:user).permit(:name, :intro, :avatar))
       flash[:notice] = "個人資料更新成功"
       redirect_to @user
     else
