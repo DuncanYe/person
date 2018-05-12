@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_items = @user.items
   end
 
   def edit

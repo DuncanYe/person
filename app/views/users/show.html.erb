@@ -1,8 +1,21 @@
-<h1>User Profile</h1>
-<p><%= image_tag @user.avatar.url(:medium) %></p>
-<h3><%= @user.name %></h3>
-<p><%= @user.intro %></p>
+<div class="col-md-6">
+  <h1>User Profile</h1>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
-<% end %>
+  <% if @user.avatar? %>
+    <p><%= image_tag @user.avatar.url(:medium) %></p>
+  <% else %>
+    <img src="https://api.fnkr.net/testimg/100x100/00CED1/FFF/?text=img+placeholder">  
+  <% end %>  
+  <h3><%= @user.name %></h3>
+  <p><%= @user.intro %></p>
+
+  <% if @user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
+  <% end %>
+</div>
+<div class="col-md-6">
+  <% @user_items.each do |item| %>
+  <h2><%= item.title %></h2>
+  <p>[ <%= item.genre.name%> ]</p>
+  <% end %>
+</div>
