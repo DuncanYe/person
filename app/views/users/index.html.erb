@@ -1,0 +1,25 @@
+<div class="col-md-8">
+  <div>
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to '活動列表', items_path %></li>
+      <li role="presentation"  class="active"><%= link_to '人物專欄', users_path %></li>
+    </ul>
+  </div>
+
+  
+    <% @users.each do |user| %>
+    <div class="col-md-6">
+      <h3><%= link_to user.name, user_path(user) %></h3>
+      <% if user.avatar? %>
+        <%= image_tag user.avatar.url(:thumb) %>
+      <% else %>  
+        <img src="https://api.fnkr.net/testimg/100x100/00CED1/FFF/?text=img+placeholder">
+      <% end %>
+      <hr>
+    </div>
+    <% end %>
+</div>
+<div class="col-md-4">
+  保留區塊
+</div>
+
