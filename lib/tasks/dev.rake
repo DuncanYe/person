@@ -27,6 +27,7 @@ namespace :dev do
       user_name = FFaker::Name.first_name
       User.create!(
         name: user_name,
+        intro: FFaker::Lorem.paragraph,
         email: "#{user_name}@example.com",
         password: "123456"
         )
