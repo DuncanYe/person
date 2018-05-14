@@ -1,21 +1,23 @@
 <div class="col-md-6">
-  <h1>User Profile</h1>
-
+  <h2><%= @user.name %></h2>
+  <ul class="list-unstyled  list-inline">
+    <li><strong><%= @user.items.size %></strong> 已建立的活動</li>
+    <li><strong><%= @user.comments.size %></strong> 參與討論的活動</li>
+  </ul>
   <% if @user.avatar? %>
     <p><%= image_tag @user.avatar.url(:medium) %></p>
   <% else %>
     <img src="https://api.fnkr.net/testimg/100x100/00CED1/FFF/?text=img+placeholder">  
   <% end %>  
-  <h3><%= @user.name %></h3>
-  <p><%= @user.intro %></p>
-
+    <p><%= @user.intro %></p>
   <% if @user == current_user %>
     <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
   <% end %>
 </div>
-<div class="col-md-6">
+<div class="col-md-6 text-center">
+  <h1><%= @user.name %> 建立的活動</h1>
   <% @user_items.each do |item| %>
-  <h2><%= item.title %></h2>
-  <p>[ <%= item.genre.name%> ]</p>
+    <h2><%= link_to item.title, item_path(item) %></h2>
+    <p>[ <%= item.genre.name%> ]</p>
   <% end %>
 </div>
