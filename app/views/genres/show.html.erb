@@ -1,4 +1,8 @@
 <div class="col-md-8">
+  <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><%= link_to '活動列表', items_path %></li>
+      <li role="presentation"><%= link_to '人物專欄', users_path %></li>
+    </ul>
   <h1>活動資訊</h1>
   <% @items.each do |item| %>
     <div class="col-md-6">
