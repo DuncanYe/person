@@ -4,8 +4,10 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comment = @item.comments.build(comment_params)
     @comment.user = current_user
-    if @comment.save!
+    if @comment.save
       flash[:notice] = "留言成功"
+    else
+      flash[:alert] = "留言不可空白"
       redirect_to item_path(@item)
     end
   end
