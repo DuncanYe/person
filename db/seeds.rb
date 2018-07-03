@@ -21,3 +21,5 @@ genre_list.each do |genre|
   Genre.create( name: genre[:name] )
 end
 puts "建立#{Genre.count}個活動類型"
+
+User.create(name: 'Duncan', role: 'admin', password: '111111', email: '123@123')
