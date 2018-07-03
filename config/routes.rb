@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
   resources :genres, only: :show
   authenticated :user do 
-    root "items#index", as: "authenticated_root"
+    root "items#index"
+    # heroku 無效
   end 
 
   get 'welcomes/about_me'
