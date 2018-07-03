@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
       flash[:notice] = "留言成功"
     else
       flash[:alert] = "留言不可空白"
-      redirect_to item_path(@item)
     end
+      redirect_to item_path(@item)
   end
 
   def destroy
