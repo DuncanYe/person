@@ -17,7 +17,13 @@
   <% else %>
     <img src="https://api.fnkr.net/testimg/100x100/00CED1/FFF/?text=img+placeholder">
   <% end %>
-  <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+  <% if current_user != user %>
+    <% if current_user.followed?(user) %>
+      <%= link_to 'Unollow', followship_path(user), method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to 'Follow', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+    <% end %>  
+  <% end %>
   <hr>
 </div>
 <% end %>
