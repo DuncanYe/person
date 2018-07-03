@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [ :show, :edit, :update ]
 
   def index
-    @users = User.page(params[:page]).per(9)
+    @users = User.page(params[:page]).per(9).includes(:items, :comments)
   end
 
   def show
