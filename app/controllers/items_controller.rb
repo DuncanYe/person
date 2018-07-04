@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :find_item, only: [:show, :edit, :update, :destroy, :like, :unlike]
   def index
     @items = Item.order(created_at: :desc).page(params[:page]).per(8).includes(:genre, :user)
     @genres = Genre.all
@@ -43,6 +43,20 @@ class ItemsController < ApplicationController
     @item.destroy
     flash[:notice] = '項目已經刪除'
     redirect_to items_path
+  end
+
+  def like
+    if @item.likes.create(user: current_user)
+    else
+      flash[:alert] = @item.errors.full_messages.to_sentence
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unlike
+    like = @item.likes.where(user: current_user)
+    like.destroy_all
+    redirect_back(fallback_location: root_path)
   end
 
 

@@ -1,6 +1,13 @@
 <div class="col-md-6">
   <h2><%= @item.title %></h2>
-  <h4>[ <%= @item.genre.name %> ]</h4>
+  <h4>
+    [ <%= @item.genre.name %> ]
+    <% if @item.liked?(current_user) %>
+      <%= link_to "unlike", unlike_item_path(@item), data: {"disable-with": "Waiting...."}, method: :post, class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "like", like_item_path(@item), data: {"disable-with": "Waiting...."}, method: :post, class: "btn btn-primary" %>
+    <% end %>
+  </h4>
   <p>時間： <%= @item.date %>地點：<%= @item.location %></p>
   <p> 主辦人：<%= @item.user.name %></p>
   <p><%= @item.intro %></p>

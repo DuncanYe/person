@@ -8,5 +8,10 @@ class Item < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
-  
+
+
+  def liked?(x)
+    self.liked_users.include?(x)
+  end
+
 end
