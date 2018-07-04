@@ -14,4 +14,9 @@ class Item < ApplicationRecord
     self.liked_users.include?(x)
   end
 
+  def count_likes
+    self.likes_count = self.likes.size
+    self.save
+  end
+
 end
