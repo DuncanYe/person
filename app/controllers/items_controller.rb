@@ -47,14 +47,12 @@ class ItemsController < ApplicationController
 
   def like
     @item.likes.create(user: current_user)
-    @item.count_likes
     redirect_back(fallback_location: root_path)
   end
 
   def unlike
     like = @item.likes.where(user: current_user)
     like.destroy_all
-    @item.count_likes
     redirect_back(fallback_location: root_path)
   end
 
