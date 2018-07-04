@@ -1,0 +1,5 @@
+<% if item.liked?(current_user) %>
+  <%= link_to "unlike", unlike_item_path(item), data: {"disable-with": "Waiting...."}, method: :post, class: "btn btn-danger" %>
+<% else %>
+  <%= link_to "like", like_item_path(item), data: {"disable-with": "Waiting...."}, method: :post, class: "btn btn-primary" %>
+<% end %>
