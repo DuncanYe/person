@@ -16,12 +16,11 @@
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
           <li><%= link_to 'New Event', new_item_path %></li>
-          <li><%= link_to 'About Me', welcomes_about_me_path %></li>
         <% end %>
       </ul>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in? %>
-            <li><%= link_to '後台', admin_genres_path %></li>
+            <li><%= link_to '後台', admin_genres_path if current_user.admin? %></li>
             <li><p class="navbar-text">Hi, <%= current_user.name %></p></li>
             <li><%= link_to 'User Profile', user_path(current_user) %></li>
             <li><%= link_to 'Setting', edit_user_registration_path %></li>
