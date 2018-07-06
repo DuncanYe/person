@@ -3,7 +3,7 @@
   <ul class="list-unstyled  list-inline">
     <li><strong><%= @user.items.size %></strong> 已建立的活動</li>
     <li><strong><%= @user.comments.size %></strong> 參與討論的活動</li>
-    <li><strong><%= @user.followships.size %></strong> Following</li>
+    <li><strong><%= @user.followships.size %></strong> Following_events</li>
   </ul>
   <% if @user.avatar? %>
     <p><%= image_tag @user.avatar.url(:medium) %></p>
