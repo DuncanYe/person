@@ -4,6 +4,7 @@
     <li><strong><%= @user.items.size %></strong> 已建立的活動</li>
     <li><strong><%= @user.comments.size %></strong> 參與討論的活動</li>
     <li><strong><%= @user.followships.size %></strong> Following_events</li>
+    <li><strong><%= @user.likes_count %></strong> 按讚的活動</li>
   </ul>
   <% if @user.avatar? %>
     <p><%= image_tag @user.avatar.url(:medium) %></p>
