@@ -8,15 +8,7 @@
       <li role="presentation"><%= link_to '喜歡的活動' %></li>
     </ul>
   </div>
-  <% if @user.avatar? %>
-    <p><%= image_tag @user.avatar.url(:medium) %></p>
-  <% else %>
-    <img src="https://api.fnkr.net/testimg/100x100/00CED1/FFF/?text=img+placeholder">  
-  <% end %>  
-    <p><%= @user.intro %></p>
-  <% if @user == current_user %>
-    <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-primary' %>
-  <% end %>
+  <%= render partial: 'shared/user_profile', locals: { user: @user } %>
 </div>
 <div class="col-md-5 text-center">
   <h1><%= @user.name %> 建立的活動</h1>
