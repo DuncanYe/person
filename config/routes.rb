@@ -29,7 +29,11 @@ Rails.application.routes.draw do
     root "genre#index"
   end
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do 
+    member do
+      get :comments
+    end
+  end
   resources :followships, only: [:create, :destroy]
 
 end

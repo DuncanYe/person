@@ -2,8 +2,8 @@
   <div>
     <ul class="nav nav-tabs">
       <h2><%= @user.name %></h2>
-      <li role="presentation"  class="active"><%= link_to '我建立的活動', user_path(@user) %></li>
-      <li role="presentation"><%= link_to '參與討論的活動', comments_user_path(@user) %></li>
+      <li role="presentation"><%= link_to '我建立的活動', user_path(@user) %></li>
+      <li role="presentation" class="active"><%= link_to '參與討論的活動', comments_user_path(@user) %></li>
       <li role="presentation"><%= link_to '追隨的活動' %></li>
       <li role="presentation"><%= link_to '喜歡的活動' %></li>
     </ul>
@@ -19,8 +19,8 @@
   <% end %>
 </div>
 <div class="col-md-5 text-center">
-  <h1><%= @user.name %> 建立的活動</h1>
-  <% @user_items.each do |item| %>
+  <h3><%= @user.name %> 參與討論的活動</h3>
+  <% @commented_items.each do |item| %>
     <h2><%= link_to item.title, item_path(item) %></h2>
     <p>[ <%= item.genre.name%> ]</p>
   <% end %>
