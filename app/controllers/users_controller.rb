@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [ :show, :edit, :update, :comments, :followings ]
+  before_action :find_user, only: [ :show, :edit, :update, :comments, :followings, :liked_items ]
 
   def index
     @users = User.page(params[:page]).per(9).includes(:items, :comments)
@@ -27,6 +27,10 @@ class UsersController < ApplicationController
 
   def followings
     @followings = @user.followings
+  end
+
+  def liked_items
+    @liked_items = @user.liked_items
   end
 
   private

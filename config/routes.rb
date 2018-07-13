@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     member do
       get :comments
       get :followings
+      get :liked_items
     end
   end
   resources :followships, only: [:create, :destroy]

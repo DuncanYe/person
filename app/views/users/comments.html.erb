@@ -4,7 +4,7 @@
       <h2><%= @user.name %></h2>
       <li role="presentation"><%= link_to '我建立的活動', user_path(@user) %></li>
       <li role="presentation" class="active"><%= link_to '參與討論的活動', comments_user_path(@user) %></li>
-      <li role="presentation"><%= link_to '喜歡的活動' %></li>
+      <li role="presentation"><%= link_to '喜歡的活動', liked_items_user_path(@user)  %></li>
       <li role="presentation"><%= link_to '追蹤的人', followings_user_path(@user)  %></li>
     </ul>
   </div>
