@@ -11,7 +11,7 @@
   <%= render partial: 'shared/user_profile', locals: { user: @user } %>
 </div>
 <div class="col-md-5 text-center">
-  <h1><%= @user.name %> 建立的活動</h1>
+  <h3><%= @user.name %> 建立的活動</h3>
   <% @user_items.each do |item| %>
     <h2><%= link_to item.title, item_path(item) %></h2>
     <p>[ <%= item.genre.name%> ]</p>
