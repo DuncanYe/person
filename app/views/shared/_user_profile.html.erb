@@ -3,6 +3,7 @@
 <% else %>
   <img src="https://api.fnkr.net/testimg/100x100/00CED1/FFF/?text=img+placeholder">  
 <% end %>  
+  <h3>About Me</h3>
   <p><%= user.intro %></p>
 <% if user == current_user %>
   <%= link_to 'Edit Profile', edit_user_path(user), class: 'btn btn-primary' %>

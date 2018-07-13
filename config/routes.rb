@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do 
     member do
       get :comments
+      get :followings
     end
   end
   resources :followships, only: [:create, :destroy]
