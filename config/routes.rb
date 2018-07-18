@@ -26,7 +26,8 @@ Rails.application.routes.draw do
 
   namespace :admin do 
     resources :genres
-    resources :items
+    resources :items, only: [:index]
+    resources :users, only: [:index, :edit, :update, :destroy]
     root "genre#index"
   end
 
