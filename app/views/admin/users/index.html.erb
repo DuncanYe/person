@@ -1,0 +1,22 @@
+<div class="user_list">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">User Name</th>
+            <th scope="col">User role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <th><%= user.id %></th>
+              <td><%= user.name %></td>
+              <td><%= user.role %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </thead>
+  </table>
+</div>
