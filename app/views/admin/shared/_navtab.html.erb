@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" class=<%= "active" if current_page? admin_items_path %>>
+    <%= link_to "Events", admin_items_path %>
+  </li>
+  <li role="presentation" class=<%= "active" if current_page? admin_users_path %>>
+    <%= link_to "Users", admin_users_path %>
+  </li>
+  <li role="presentation" class=<%= "active" if current_page? admin_genres_path %>>
+    <%= link_to "Genres", admin_genres_path %>
+  </li>
+</ul>
+<br>
