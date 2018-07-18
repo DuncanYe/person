@@ -8,14 +8,13 @@
             <th scope="col">Event Name</th>
             <th scope="col">Event User</th>
             <th scope="col">Event Location</th>
-            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
           <% @items.each do |item| %>
             <tr>
               <th scope="row"><%= item.id %></th>
-              <td><%= item.title %></td>
+              <td><%= link_to item.title, item_path(item) %></td>
               <td><%= item.user.name %></td>
               <td><%= item.location %></td>
             </tr>
