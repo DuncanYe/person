@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   namespace :admin do 
     resources :genres
+    resources :items
     root "genre#index"
   end
 
