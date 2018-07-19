@@ -10,6 +10,8 @@
                 <th scope="col"><%= sort_link(@ransack, :name, '姓名') %></th>
                 <th scope="col"><%= sort_link(@ransack, :role, '權限') %></th>
                 <th scope="col"><%= sort_link(@ransack, :likes_count, '按讚數') %></th>
+                <th scope="col"><%= sort_link(@ransack, :followings_count) %></th>
+                <th scope="col"><%= sort_link(@ransack, :followers_count) %></th>
               </tr>
             </thead>
             <tbody>
@@ -19,6 +21,8 @@
                   <td><%= user.name %></td>
                   <td><%= user.role %></td>
                   <td><%= user.likes_count %></td>
+                  <td><%= user.followings_count %></td>
+                  <td><%= user.followers_count %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -31,8 +35,8 @@
       <%= search_form_for @ransack , url: admin_users_path do |f| %>
 
         <div>
-          <%= f.label :id_cont, 'ID' %>
-          <%= f.search_field :id_cont %>
+          <%= f.label :id_eq, 'ID' %>
+          <%= f.search_field :id_eq %>
         </div>
 
         <div>
