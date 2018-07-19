@@ -48,5 +48,20 @@ namespace :dev do
     puts "create #{Like.count} fake likes"
   end
 
+  task fake_follow: :environment do
+    Followship.destroy_all
+
+    User.all.each do |user|
+      followings = User.all.sample(rand(2..20))
+      if followings.include?(user)
+        followings.delete(user)
+      end
+      for following in followings
+        user.followships.create!(following: following)
+      end
+    end
+    puts "create #{Followship.count} fake follow"
+  end
+
 
 end
