@@ -9,6 +9,7 @@
                 <th scope="col"><%= sort_link(@ransack, :id) %></th>
                 <th scope="col"><%= sort_link(@ransack, :name, '姓名') %></th>
                 <th scope="col"><%= sort_link(@ransack, :role, '權限') %></th>
+                <th scope="col"><%= sort_link(@ransack, :likes_count, '按讚數') %></th>
               </tr>
             </thead>
             <tbody>
@@ -17,6 +18,7 @@
                   <th><%= user.id %></th>
                   <td><%= user.name %></td>
                   <td><%= user.role %></td>
+                  <td><%= user.likes_count %></td>
                 </tr>
               <% end %>
             </tbody>

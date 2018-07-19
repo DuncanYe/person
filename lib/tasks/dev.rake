@@ -35,5 +35,18 @@ namespace :dev do
     puts "New have #{User.count} users data."
   end
 
+  task fake_like: :environment do
+    Like.destroy_all
+    100.times do
+      user = User.all.sample
+      item = Item.all.sample
+      unless item.likes.create(user: user)
+        return
+      end
+    end
+
+    puts "create #{Like.count} fake likes"
+  end
+
 
 end
