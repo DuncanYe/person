@@ -7,8 +7,8 @@
           <thead>
               <tr>
                 <th scope="col"><%= sort_link(@ransack, :id) %></th>
-                <th scope="col"><%= sort_link(@ransack, :name) %></th>
-                <th scope="col"><%= sort_link(@ransack, :role) %></th>
+                <th scope="col"><%= sort_link(@ransack, :name, '姓名') %></th>
+                <th scope="col"><%= sort_link(@ransack, :role, '權限') %></th>
               </tr>
             </thead>
             <tbody>
@@ -25,6 +25,7 @@
     </div>
     <div class="col-md-4">
       <h3>Search</h3>
+      <hr>
       <%= search_form_for @ransack , url: admin_users_path do |f| %>
 
         <div>
@@ -39,12 +40,12 @@
 
         <div>
           <%= f.label :role_cont %>
-          <%= f.search_field :role_cont  %>
+          <%= f.select :role_cont, User::ROLE.map(&:reverse), include_blank: '不限'  %>
         </div>
 
         <div>
           <%= f.submit '搜尋', class: 'btn btn-primary' %>
-          <%= button_tag "重置", type: :reset, class: 'btn btn-default' %>
+          <%= link_to '重置', admin_users_path, class: 'btn btn-default' %>
         </div>
 
       <% end %>

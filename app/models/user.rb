@@ -17,6 +17,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_items, through: :likes, source: :item
 
+  ROLE = {
+    normal: '一般用戶',
+    admin: '管理員'
+  }
+
   def admin?
      self.role == "admin"
   end
