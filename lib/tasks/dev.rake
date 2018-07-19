@@ -63,5 +63,19 @@ namespace :dev do
     puts "create #{Followship.count} fake follow"
   end
 
+  task fake_comment: :environment do
+    Comment.destroy_all
+    100.times do
+      user = User.all.sample
+      item = Item.all.sample
+      Comment.create(
+        user: user,
+        item: item,
+        content: FFaker::Lorem::sentence(10) 
+        )
+    end
+    puts "create #{Comment.count} fake comment"
+  end
+
 
 end
