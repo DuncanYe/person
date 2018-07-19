@@ -31,17 +31,22 @@
       <%= search_form_for @ransack , url: admin_users_path do |f| %>
 
         <div>
-          <%= f.label :id_cont %>
+          <%= f.label :id_cont, 'ID' %>
           <%= f.search_field :id_cont %>
         </div>
 
         <div>
-          <%= f.label :name_ %>
+          <%= f.label :name_cont, 'Name' %>
           <%= f.search_field :name_cont %>
         </div>
 
         <div>
-          <%= f.label :role_cont %>
+          <%= f.label :likes_count_gteq, 'likes' %>
+          <%= f.search_field :likes_count_gteq %>
+        </div>
+
+        <div>
+          <%= f.label :role_cont, '權限' %>
           <%= f.select :role_cont, User::ROLE.map(&:reverse), include_blank: '不限'  %>
         </div>
 
