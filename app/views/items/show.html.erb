@@ -1,36 +1,30 @@
 <div class="col-md-6">
-  <h2><%= @item.title %></h2>
-  <h4>
-    [ <%= @item.genre.name %> ]
-    <%= render partial: "shared/like", locals: { item: @item } %>
-  </h4>
-  <p>時間： <%= @item.date %>地點：<%= @item.location %></p>
-  <p> 主辦人：<%= @item.user.name %></p>
-  <p><%= @item.intro %></p>
-  <% if @item.user_id == current_user.id || current_user.admin? %>
-    <%= link_to 'Edit', edit_item_path(@item), class: 'badge badge-primary' %>
-  <% end %>
-  <% if current_user.admin? %>
-    <%= link_to 'Trash It', item_path(@item), method: :delete, data: { confirm: 'Are you sure?'}, class: 'badge badge-danger' %>
-  <% end %>
-  <br>
+  <div class="item">
+    <h2><%= @item.title %></h2>
+    <h4>
+      [ <%= @item.genre.name %> ]
+      <%= render partial: "shared/like", locals: { item: @item } %>
+    </h4>
+    <p>時間： <%= @item.date %>地點：<%= @item.location %></p>
+    <p> 主辦人：<%= link_to @item.user.name, user_path(@item.user) %></p>
+    <p><%= @item.intro %></p>
+    <% if @item.user_id == current_user.id || current_user.admin? %>
+      <%= link_to 'Edit', edit_item_path(@item), class: 'badge badge-primary' %>
+    <% end %>
+    <% if current_user.admin? %>
+      <%= link_to 'Trash It', item_path(@item), method: :delete, data: { confirm: 'Are you sure?'}, class: 'badge badge-danger' %>
+    <% end %>
+  </div>  
   <hr>
-
-  <div class="register">
+  <div class="register_form">
     <h3>目前有 <%= @item.registers_count %> 報名</h3>
-    <% if @item.register?(current_user) || @item.user_id == current_user.id || current_user.admin? %>
-       <% @item.registers.each do |register| %>
-        <% if current_user == register.user %>
-          <h3>您在<%= register.created_at.strftime("%Y-%m-%d, %H:%M") %>已報名此活動，如欲更改請與主辦人聯絡</h3>
+    <% if @item.register?(current_user) %>
+      <% @item.registers.each do |register| %>
+        <% if current_user.id == register.user_id %>
+          <h3>您於 <%= register.created_at.strftime("%Y-%m-%d, %H:%M") %>已報名成功，<br>如有任何問題請與 <em><%=link_to @item.user.name, user_path(@item.user) %></em> 聯繫</h3>
           <hr>
         <% end %>
-         <% if @item.user_id == current_user.id || current_user.admin? %>
-          <h2>報名列表</h2>
-          <h4><%=link_to register.user.name, user_path(register.user) %> 在 <em><%= time_ago_in_words(register.created_at) %></em> 報名</h4>
-          <p>留言：<%= register.content %></p>
-            <hr>
-        <% end %>
-      <% end %> 
+      <% end %>
     <% else %>
       <%= form_for [@item, @register] do |f| %>
         <h2>即刻報名</h2> <br>
@@ -41,6 +35,18 @@
         <%= f.submit '送出', class: 'btn btn-default' %>
       <% end %>
     <% end %>
+    <div class="register_list">
+      <% if @item.user == current_user || current_user.admin? %>
+        <% if @item.registers.present? %>
+          <h2>報名列表</h2>
+        <% end %>  
+        <% @item.registers.each do |register| %>
+          <h4><%=link_to register.user.name, user_path(register.user) %> 在 <em><%= time_ago_in_words(register.created_at) %></em> 報名</h4>
+          <p>留言：<%= register.content %></p>
+          <hr>
+        <% end %>  
+      <% end %>
+    </div>  
   </div>
 </div>
 <div class="col-md-6">
@@ -56,7 +62,7 @@
         </div>
       <% end %>
     </div>
-    <div class="comments">
+    <div class="comments_list">
       <h3>Discusstion：</h3>
         <% @item.comments.each do |comment| %>
           <p><%= simple_format comment.content %></p>
