@@ -17,6 +17,7 @@
   <hr>
 
   <div class="register">
+    <h3>目前有 <%= @item.registers_count %> 報名</h3>
     <% if @item.register?(current_user) || @item.user_id == current_user.id || current_user.admin? %>
        <% @item.registers.each do |register| %>
         <% if current_user == register.user %>
