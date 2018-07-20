@@ -17,15 +17,19 @@
   <hr>
 
   <div class="register">
-    <%= form_for [@item, @register] do |f| %>
-     <h2>即刻報名</h2> <br>
+    <% if @item.register?(current_user) %>
+      <h3>您在xxx已報名成功</h3>
+    <% else %>
+      <%= form_for [@item, @register] do |f| %>
+       <h2>即刻報名</h2> <br>
 
-      <div class="form-group">
-        <%= f.label :content, '請填寫簡單句子，確認你不是機器人 ：)' %>
-        <%= f.text_field :content, class: 'form-control', placeholder: '按下送出後，及報名成功' %>
-      </div>   
+        <div class="form-group">
+          <%= f.label :content, '請填寫簡單句子，確認你不是機器人 ：)' %>
+          <%= f.text_field :content, class: 'form-control', placeholder: '按下送出後，及報名成功' %>
+        </div>   
 
-      <%= f.submit '送出', class: 'btn btn-default' %>
+        <%= f.submit '送出', class: 'btn btn-default' %>
+      <% end %>
     <% end %>
   </div>
 

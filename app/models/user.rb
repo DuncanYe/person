@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_items, through: :likes, source: :item
 
+  has_many :registers, dependent: :destroy
+
   ROLE = {
     normal: '一般用戶',
     admin: '管理員'
@@ -28,6 +30,6 @@ class User < ApplicationRecord
 
   def followed?(user)
     self.followings.include?(user) 
-  end 
+  end
 
 end
