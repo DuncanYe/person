@@ -77,5 +77,19 @@ namespace :dev do
     puts "create #{Comment.count} fake comment"
   end
 
+  task fake_register: :environment do
+    Register.destroy_all
+    50.times do
+      user = User.all.sample
+      item = Item.all.sample
+      Register.create(
+        user: user,
+        item: item,
+        content: FFaker::Lorem::sentence(6)
+        )
+    end
+    puts "create #{Register.count} fake Register"
+  end
+
 
 end
