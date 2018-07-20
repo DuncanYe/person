@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :comments, only: [:create, :destroy]
+    resources :registers, only: [:create, :destroy]
 
     collection do
       get :ranking
