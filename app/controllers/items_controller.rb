@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @register = Register.new
   end
 
   def edit  
