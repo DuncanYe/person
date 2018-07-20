@@ -17,22 +17,30 @@
   <hr>
 
   <div class="register">
-    <% if @item.register?(current_user) %>
-      <h3>您在xxx已報名成功</h3>
+    <% if @item.register?(current_user) || @item.user_id == current_user.id || current_user.admin? %>
+       <% @item.registers.each do |register| %>
+        <% if current_user == register.user %>
+          <h3>您在<%= register.created_at.strftime("%Y-%m-%d, %H:%M") %>已報名此活動，如欲更改請與主辦人聯絡</h3>
+          <hr>
+        <% end %>
+         <% if @item.user_id == current_user.id || current_user.admin? %>
+          <h2>報名列表</h2>
+          <h4><%=link_to register.user.name, user_path(register.user) %> 在 <em><%= time_ago_in_words(register.created_at) %></em> 報名</h4>
+          <p>留言：<%= register.content %></p>
+            <hr>
+        <% end %>
+      <% end %> 
     <% else %>
       <%= form_for [@item, @register] do |f| %>
-       <h2>即刻報名</h2> <br>
-
+        <h2>即刻報名</h2> <br>
         <div class="form-group">
           <%= f.label :content, '請填寫簡單句子，確認你不是機器人 ：)' %>
-          <%= f.text_field :content, class: 'form-control', placeholder: '按下送出後，及報名成功' %>
+          <%= f.text_area :content, class: 'form-control', placeholder: '按下送出後，及報名成功' %>
         </div>   
-
         <%= f.submit '送出', class: 'btn btn-default' %>
       <% end %>
     <% end %>
   </div>
-
 </div>
 <div class="col-md-6">
   <div class="col-md-offset-2">
@@ -55,6 +63,7 @@
           <% if  comment.user_id == current_user.id %>
             <%= link_to 'Destory', item_comment_path(@item, comment), method: :delete, data: {confirm: "Are you sure?"} %>
           <% end %>
+          <hr>
         <% end %>
     </div>
   </div>
