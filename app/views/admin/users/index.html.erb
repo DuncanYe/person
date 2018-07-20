@@ -19,7 +19,7 @@
               <% @users.each do |user| %>
                 <tr>
                   <th><%= user.id %></th>
-                  <td><%= user.name %></td>
+                  <td><%= link_to user.name, user_path(user) %></td>
                   <td><%= user.role %></td>
                   <td><%= user.likes_count %></td>
                   <td><%= user.followings_count %></td>
