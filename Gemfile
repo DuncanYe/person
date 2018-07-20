@@ -31,6 +31,7 @@ gem 'ffaker'
 gem 'kaminari'
 gem 'paperclip', '~> 6.0.0'
 gem 'ransack', '~> 1.8', '>= 1.8.8'
+gem 'omniauth-facebook'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
