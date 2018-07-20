@@ -12,6 +12,7 @@
                 <th scope="col"><%= sort_link(@ransack, :likes_count, '按讚數') %></th>
                 <th scope="col"><%= sort_link(@ransack, :followings_count) %></th>
                 <th scope="col"><%= sort_link(@ransack, :followers_count) %></th>
+                <th scope="col"><%= sort_link(@ransack, :registers_count) %></th>
               </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                   <td><%= user.likes_count %></td>
                   <td><%= user.followings_count %></td>
                   <td><%= user.followers_count %></td>
+                  <td><%= user.registers_count %></td>
                 </tr>
               <% end %>
             </tbody>

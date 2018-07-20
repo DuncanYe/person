@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :genres
     resources :items, only: [:index]
     resources :users, only: [:index, :edit, :update, :destroy]
-    root "genre#index"
+    root "users#index"
   end
 
   resources :users, only: [:index, :show, :edit, :update] do 
