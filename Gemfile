@@ -43,7 +43,8 @@ gem 'omniauth-facebook'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production do
-  gem 'pg', '~> 0.21'
+  # gem 'pg', '~> 0.21'
+  gem 'mysql2', '< 0.5'
 end
 
 group :development, :test do
