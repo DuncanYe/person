@@ -91,5 +91,14 @@ namespace :dev do
     puts "create #{Register.count} fake Register"
   end
 
+  task fake_all: [
+    :fake_item,
+    :fake_user,
+    :fake_comment,
+    :fake_like,
+    :fake_follow,
+    :fake_register
+  ]
+
 
 end
