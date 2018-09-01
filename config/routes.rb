@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'welcomes/about_me'
   root "welcomes#about_me"
 
-  namespace :admin do 
+  namespace :admin, path: :abcdefg_make_backend_abstruse do 
     resources :genres
     resources :items, only: [:index]
     resources :users, only: [:index, :edit, :update, :destroy]
