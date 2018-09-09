@@ -18,12 +18,12 @@ Rails.application.routes.draw do
   end
   resources :genres, only: :show
   authenticated :user do 
-    root "items#index"
     # heroku 無效
   end 
+  root "items#index"
 
-  get 'welcomes/about_me'
-  root "welcomes#about_me"
+  # get 'welcomes/about_me'
+  # root "welcomes#about_me"
 
   namespace :admin, path: :abcdefg_make_backend_abstruse do 
     resources :genres

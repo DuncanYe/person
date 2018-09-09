@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  skip_before_action :authenticate_user!, only: [:index], raise: false
   def index
     @items = Item.order(created_at: :desc).page(params[:page]).per(8).includes(:genre, :user)
     @genres = Genre.all
