@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @genres.each do |genre| %>
+      <%= @genres.each do |genre| %>
       <tr>
         <th scope="row"><%= genre.id %></th>
         <td><%= genre.name %></td>

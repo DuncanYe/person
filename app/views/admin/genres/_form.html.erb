@@ -1,8 +1,4 @@
 <div class="row">
-  <% if genre.errors.any? %>
-      <%= genre.errors.full_messages.to_sentence %>
-    <% end %>
-
   <%= form_for [:admin, genre] do |f| %>
     <div class="form-group">
       <%= f.text_field :name, placeholder: "Genre Name",  class: "      form-control" %>

@@ -20,6 +20,15 @@ class User < ApplicationRecord
 
   has_many :registers, dependent: :destroy
 
+
+  def follow(other_user)
+    followships.create(following_id: other_user.id)
+  end
+  # follow unfollow 讓 controller 直接使用
+  def unfollow(other_user)
+    followships.find_by(following_id: other_user.id).destroy
+  end
+
   def self.from_omniauth(auth)
     # Case 1: Find existing user by facebook uid
     user = User.find_by_fb_uid( auth.uid )
