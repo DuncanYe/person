@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = "留言不可空白"
     end
-      redirect_to item_path(@item)
+      # redirect_to item_path(@item)
+      redirect_to request.referrer, alert: @comment.errors.full_messages.to_sentence
   end
 
   def destroy
