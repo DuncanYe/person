@@ -32,6 +32,11 @@ gem 'kaminari'
 gem 'paperclip', '~> 6.0.0'
 gem 'ransack', '~> 1.8', '>= 1.8.8'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'pry', '~> 0.12.2'
+gem 'hirb', '~> 0.7.3'
+
+# AIzaSyBOAoLdSNPOtOUurQVBVUkzVcTNWXZQgrA
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

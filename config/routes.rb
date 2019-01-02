@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'foo/bar'
+  get 'foo/baz'
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -40,5 +42,11 @@ Rails.application.routes.draw do
     end
   end
   resources :followships, only: [:create, :destroy]
+
+  namespace :api, defaults: {format: :json } do
+    namespace :v1 do
+      resources :users, only: [:index]
+    end
+  end
 
 end
