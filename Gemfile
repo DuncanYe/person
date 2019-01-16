@@ -31,8 +31,10 @@ gem 'ffaker'
 gem 'kaminari'
 gem 'paperclip', '~> 6.0.0'
 gem 'ransack', '~> 1.8', '>= 1.8.8'
+gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
+gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
+# gem 'omniauth-google-oauth2'
 gem 'pry', '~> 0.12.2'
 
 # AIzaSyBOAoLdSNPOtOUurQVBVUkzVcTNWXZQgrA
@@ -47,7 +49,7 @@ gem 'pry', '~> 0.12.2'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production do
-  # gem 'pg', '~> 0.21'
+  gem 'pg', '~> 0.21'
   # gem 'mysql2', '< 0.5'
 end
 

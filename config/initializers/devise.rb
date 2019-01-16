@@ -43,7 +43,12 @@ Devise.setup do |config|
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [:email]
 
-  config.omniauth :facebook, "929328943920640", "d16fcb4c15d9b96fcb732c060ef44bef", scope: "public_profile,email", info_fields: "email,name", callback_url: "https://personn.herokuapp.com/users/auth/facebook/callback"
+  config.omniauth :facebook, ENV['FACEBOOK_CLIENT_ID'], ENV['FACEBOOK_CLIENT_SECRET'],
+                scope: 'email',
+                info_fields: 'email, name, link',
+                secure_image_url: true,
+                image_size:  'large'
+
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
