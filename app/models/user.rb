@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  before_create :confirmation_token
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,6 +10,8 @@ class User < ApplicationRecord
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/       
+
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_many :items
   has_many :comments, dependent: :destroy
@@ -68,6 +73,28 @@ class User < ApplicationRecord
 
   def followed?(user)
     self.followings.include?(user) 
+  end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
+  # def check_user_email
+  #   if current_user.email_confirmed == false
+  #     flash[:alert] = "Please confirm your email address to continue"
+  #     # redirect_to root_path
+  #   end
+  # end
+  # 用 current_user 會爆掉，因為不用登入就能看見頁面
+
+  private
+
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'foo/bar'
   get 'foo/baz'
-  devise_for :users, :controllers => { :registrations => "my_registrations" }
+  devise_for :users, :controllers => { :registrations => "my_registrations"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :items do
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get :comments
       get :followings
       get :liked_items
+      get :confirm_email
     end
   end
   resources :followships, only: [:create, :destroy]

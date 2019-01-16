@@ -33,6 +33,19 @@ class UsersController < ApplicationController
     @liked_items = @user.liked_items
   end
 
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:alert] = "Welcome to the Sample App! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to new_user_session_path
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_path
+    end
+  end
+
   private
 
   def find_user

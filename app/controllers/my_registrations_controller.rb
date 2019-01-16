@@ -1,10 +1,19 @@
 class MyRegistrationsController < Devise::RegistrationsController
 
+  # def create
+  #   super
+  #   if @user.persisted?
+  #     UserMailer.with(user: @user).welcome_email.deliver_later
+  #   end
+  # end
+
   def create
     super
     if @user.persisted?
-      UserMailer.with(user: @user).welcome_email.deliver_later
+      UserMailer.registration_confirmation(@user).deliver_later
+      flash[:alert] = "Please confirm your email address to continue"
     end
+    # 如果失敗 devise 會自動噴錯
   end
 
   # def create
@@ -23,6 +32,23 @@ class MyRegistrationsController < Devise::RegistrationsController
   #       format.json { render json: @user.errors, status: :unprocessable_entity }
   #     end
   #   end
+  # end
+
+  private
+
+  # def sign_up_params
+  #   params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  # end
+
+  # def after_sign_up_path_for(resource)
+  #   # binding.pry
+  #   if @user..email_confirmed == false
+  #     "/users/sign_in"
+  #   end
+  # end
+ 
+  # def after_inactive_sign_up_path_for(resource)
+  #   "/users/sign_in"
   # end
 
 end
