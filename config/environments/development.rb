@@ -1,14 +1,14 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+awsemail = Rails.application.config_for(:awsemail)
 
    config.action_mailer.default_url_options = { host: "http://localhost:3000" }
    config.action_mailer.delivery_method = :smtp
    config.action_mailer.smtp_settings = {
        address:              'email-smtp.us-east-1.amazonaws.com',
        port:                 587,
-       user_name:            '',
-       password:             '',
+       user_name:            awsemail["user_name"],
+       password:             awsemail["password"],
        authentication:       'login',
        enable_starttls_auto: true,
        return_response: true
